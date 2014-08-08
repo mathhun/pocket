@@ -1,5 +1,5 @@
 module Main where
-import Pocket (pocketMain)
+import Pocket.CLI (pocketMain)
 
 main :: IO ()
 main = pocketMain

@@ -1,5 +1,5 @@
 {-# LANGUAGE DeriveGeneric, OverloadedStrings, FlexibleInstances, ScopedTypeVariables #-}
-module Pocket (pocketMain) where
+module Pocket.CLI (pocketMain) where
 
 import Control.Applicative ((<$>), (<*>))
 import Control.Lens hiding (Action)
@@ -17,7 +17,7 @@ import GHC.Generics (Generic)
 import Network.Wreq
 import System.Locale
 
-import Credentials (consumerKey, accessToken)
+import Pocket.Credentials (consumerKey, accessToken)
 
 instance FromJSON JSONResponse
 instance FromJSON JSONEntry where
