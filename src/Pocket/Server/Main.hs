@@ -6,8 +6,6 @@ import Control.Monad.Trans
 import Data.Aeson (ToJSON)
 import Data.Text (Text)
 import Database.MySQL.Simple
-import Database.MySQL.Simple.QueryResults
-import Database.MySQL.Simple.Result
 import Database.MySQL.Simple.Types
 import GHC.Generics
 import Network.Wai.Middleware.RequestLogger
@@ -29,11 +27,6 @@ data PocketData = PocketData
   } deriving (Generic)
 
 instance ToJSON PocketData
-instance QueryResults PocketData where
-  convertResults [fa, fb, fc] [va, vb, vc] = PocketData a b c
-    where a = convert fa va
-          b = convert fb vb
-          c = convert fc vc
 
 main :: IO ()
 main =
@@ -69,7 +62,11 @@ myConnectInfo = defaultConnectInfo {
 selectPocket :: IO [PocketData]
 selectPocket = do
   conn <- connect myConnectInfo
-  query_ conn $ Query $ B.concat
+  rs <- query_ conn queryPocket
+  return $ map (\(a, b, c) -> PocketData a b c) rs
+
+queryPocket :: Query
+queryPocket = Query $ B.concat
     [ "select created_at, case when favorite = 1 then 'favorite'"
     ,  "          when time_read > '1970-01-01 00:00' then 'keep'"
     ,  "          when created_at = time_added then 'added'"

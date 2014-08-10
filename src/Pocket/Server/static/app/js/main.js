@@ -13,8 +13,9 @@
 
   var collectData = function(arr) {
     var result = [];
+    var h = 2*9*60*60*1000;
     $.each(arr, function(idx, val) {
-      result.push([Date.parse(val.createdAt), val.count]);
+      result.push([Date.parse(val.createdAt)+h, val.count]);
     });
     return result;
   };
@@ -40,12 +41,17 @@
 
     return {
       chart: {
+        animation: false,
         type: 'column'
       },
       plotOptions: {
         column: {
+          animation: false,
           stacking: 'normal'
         }
+      },
+      credits: {
+        enabled: false
       },
       xAxis: {
         type: 'datetime',
