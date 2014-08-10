@@ -44,25 +44,32 @@
         animation: false,
         type: 'column'
       },
+      title: { text: null },
       plotOptions: {
         column: {
           animation: false,
           stacking: 'normal'
         }
       },
-      credits: {
-        enabled: false
-      },
+      credits: { enabled: false },
       xAxis: {
         type: 'datetime',
         dateTimeLabelFormats: {
-          month: '%Y-%m-%d',
+          day: '%m/%d',
+          month: '%Y/%m/%d',
           year: '%Y'
         }
       },
       yAxis: {
-        stackLabels: {
-          enabled: true
+        title: { text: null },
+        stackLabels: { enabled: false }
+      },
+      tooltip: {
+        formatter: function() {
+          var label = Highcharts.dateFormat('%Y/%m/%d %H:00', this.x);
+          return '<b>'+ label +'</b><br/>'+
+            this.series.name +': '+ this.y +'<br/>'+
+            'Total: '+ this.point.stackTotal;
         }
       },
       series: series,
