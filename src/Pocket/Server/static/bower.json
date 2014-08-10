@@ -1,0 +1,23 @@
+{
+  "name": "pocket",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mathhun/pocket",
+  "authors": [
+    "mathhun <achemer@gmail.com>"
+  ],
+  "description": "pocket",
+  "main": "index.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "highcharts": "~4.0.3",
+    "vue": "~0.10.6",
+    "bootstrap": "~3.2.0"
+  }
+}
