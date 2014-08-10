@@ -1,4 +1,7 @@
 Credentials.hs
 .*.swp
+*.hi
+*.o
+Main
 src/Pocket/Server/static/bower_components
 src/Pocket/Server/static/app/lib

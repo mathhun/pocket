@@ -120,7 +120,7 @@ pocketMain :: IO ()
 pocketMain = do
   time <- getCurrentTime'
   entries <- getPocket
-  print entries
+  -- print entries
   insertToDB $ map (render time :) $ map toSql entries
 
 
