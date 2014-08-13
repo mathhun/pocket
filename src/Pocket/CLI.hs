@@ -105,9 +105,17 @@ toSql e = map render [ itemId e, resolvedId e, givenUrl e, givenTitle e, favorit
                      , excerpt e, isArticle e, isIndex e, hasVideo e, hasImage e, wordCount e
                      ]
 
+-- |
+-- Convert unix-timestamp to formatted time text
+-- >>> intToDate 1407968237
+-- "2014-08-13 22:17:17"
 intToDate :: Int -> String
 intToDate ut = formatTime defaultTimeLocale "%Y-%m-%d %H:%M:%S" $ posixSecondsToUTCTime $ fromIntegral ut
 
+-- |
+-- Convert unix-timestamp to formatted time text
+-- >>> intToDate' "1407968237"
+-- "2014-08-13 22:17:17"
 intToDate' :: Text -> Text
 intToDate' t = pack $ intToDate $ read $ unpack t
 
