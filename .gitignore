@@ -5,3 +5,5 @@ Credentials.hs
 Main
 src/Pocket/Server/static/bower_components
 src/Pocket/Server/static/app/lib
+src/Pocket/Server/static/node_modules/
+src/static
